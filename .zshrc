@@ -232,7 +232,7 @@ alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 
 source ~/.zsh-personal
 
-neofetch
+#neofetch
 
 # setup from https://github.com/jaagr/dots
 alias dots='git --git-dir=$HOME/.dots.git/ --work-tree=$HOME'

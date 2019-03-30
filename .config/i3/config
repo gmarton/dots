@@ -465,7 +465,7 @@ exec --no-startup-id variety
 #exec --no-startup-id conky -c ~/.config/i3/system-overview
 
 #Polybar
-#exec_always --no-startup-id ~/.config/polybar/launch.sh &
+exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
 #####################################################################################################################
 #################                                 system applications                               #################
