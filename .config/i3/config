@@ -784,10 +784,10 @@ popup_during_fullscreen smart
 
 
 for_window [class="^.*"] border pixel 1
-gaps inner 20
+gaps inner 15
 gaps outer 5
-#smart_gaps on
-#smart_borders on
+smart_gaps on
+#mart_borders on
 
 
 
