@@ -69,7 +69,7 @@ set $right semicolon
 #exec --no-startup-id xrandr --output DVI-1 --right-of DVI-0 --auto
 #exec --no-startup-id xrandr --output DVI-D-1 --right-of DVI-I-1 --auto
 #exec --no-startup-id xrandr --output HDMI2 --right-of HDMI1 --auto
-exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1
+exec_always --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1
 
 # my current setup
 
@@ -784,7 +784,7 @@ popup_during_fullscreen smart
 
 
 for_window [class="^.*"] border pixel 1
-gaps inner 15
+gaps inner 35
 gaps outer 5
 smart_gaps on
 #mart_borders on
