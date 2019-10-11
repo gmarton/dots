@@ -140,10 +140,10 @@ bindsym $mod+shift+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63
 bindsym mod1+F3 exec --no-startup-id xfce4-appfinder
 
 # start rofi full
-bindsym $mod+F11 exec --no-startup-id rofi -show ssh -font "Noto Sans 11"
+bindsym $mod+F11 exec --no-startup-id rofi -show ssh -font "Noto Sans 11" 
 
 # start rofi small
-bindsym $mod+F12 exec --no-startup-id rofi -show run -font "Noto Sans 11"
+bindsym $mod+F12 exec --no-startup-id rofi -show run -font "Noto Sans 11" -opacity "85"
 
 
 
@@ -353,8 +353,8 @@ font pango:Noto Mono Regular 12
 # you can find the class with the program xprop
 
 # Workspace 1 browser related
-assign [class="Vivaldi-stable|Vivaldi-snapshot|Opera|Spotify"]                      → 1
-assign [class="Chromium|Google-chrome"]                                             → 1
+assign [class="Vivaldi-stable|Vivaldi-snapshot|Opera|Spotify"]                      → 3
+assign [class="Chromium|Google-chrome"]                                             → 3
 
 # Workspace 2 text editor related
 assign [class="sublime-text|sublime_text|Sublime_text|subl|Subl|subl3|Subl3"]       → 2
@@ -362,7 +362,7 @@ assign [class="Xed|xed|Brackets|Atom|Code|Geany"]                               
 
 # Workspace 3 Inkscape
 #assign [class="Inkscape"]                                                           → 3
-assign [class="Firefox"]                                                             → 3
+assign [class="Firefox|firefox"]                                                     → 3
 
 # Workspace 4 Gimp
 #assign [class="Gimp"]                                                               → 4
@@ -407,11 +407,16 @@ exec --no-startup-id pidgin
 #for_window [class="Vivaldi-stable"] focus
 exec --no-startup-id firefox
 for_window [class="Firefox"] focus
+#exec --no-startup-id vivaldi-stable
+#for_window [class="Chromium"] focus
 #text-editor
 #exec --no-startup-id geany
+
 #exec --no-startup-id atom
-exec --no-startup-id subl3
-for_window [class="sublime-text|sublime_text|Sublime_text|subl|Subl|subl3|Subl3"] focus
+#for_window [class="atom"] focus
+
+#exec --no-startup-id subl3
+#for_window [class="sublime-text|sublime_text|Sublime_text|subl|Subl|subl3|Subl3"] focus
 
 #file manager
 #exec --no-startup-id thunar
@@ -484,11 +489,11 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 #not workspace related
 
 # terminal
-bindsym $mod+Return exec --no-startup-id termite;focus
-bindsym $mod+KP_Enter exec --no-startup-id termite;focus
-bindsym control+mod1+t exec --no-startup-id termite; focus
-bindsym control+mod1+Return exec --no-startup-id termite; focus
-bindsym control+mod1+KP_Enter exec --no-startup-id termite; focus
+bindsym $mod+Return exec --no-startup-id xfce4-terminal;focus
+bindsym $mod+KP_Enter exec --no-startup-id xfce4-terminal;focus
+bindsym control+mod1+t exec --no-startup-id xfce4-terminal; focus
+bindsym control+mod1+Return exec --no-startup-id xfce4-terminal; focus
+bindsym control+mod1+KP_Enter exec --no-startup-id xfce4-terminal; focus
 
 #System monitor
 bindsym control+Shift+Escape exec --no-startup-id xfce4-taskmanager;focus
@@ -540,8 +545,8 @@ bindsym control+mod1+v exec --no-startup-id vivaldi-stable;focus
 bindsym control+mod1+g exec --no-startup-id chromium;focus
 
 #workspace 2 related
-bindsym $mod+F2 exec --no-startup-id subl3;focus
-#bindsym $mod+F2 exec --no-startup-id atom;focus
+#bindsym $mod+F2 exec --no-startup-id subl3;focus
+bindsym $mod+F2 exec --no-startup-id atom;focus
 bindsym control+mod1+w exec --no-startup-id geany;focus
 
 #workspace 3 related
@@ -574,8 +579,8 @@ bindsym control+mod1+e exec --no-startup-id evolution;focus
 #bindsym control+mod1+e exec --no-startup-id geary;focus
 
 #workspace 10 related
-bindsym $mod+F10 exec --no-startup-id spotify;focus
-bindsym control+mod1+s exec --no-startup-id spotify;focus
+#bindsym $mod+F10 exec --no-startup-id spotify;focus
+#bindsym control+mod1+s exec --no-startup-id spotify;focus
 
 
 
@@ -784,10 +789,10 @@ popup_during_fullscreen smart
 
 
 for_window [class="^.*"] border pixel 1
-gaps inner 35
-gaps outer 5
+gaps inner 25
+gaps outer 1
 smart_gaps on
-#mart_borders on
+smart_borders on
 
 
 
@@ -844,7 +849,8 @@ mode "$mode_gaps_outer" {
 #####################################################################################################################
 
 #if you want transparency on non-focused windows, ...
-exec_always --no-startup-id compton --config ~/.config/i3/compton.conf
+#exec_always --no-startup-id compton --blur-background --blur-method kawase --blur-strength 12 --opacity-rule 90:'class_g="Termite"' --opacity-rule 60:'class_g="Thunar"' --opacity-rule 95:'class_g="rofi"' --opacity-rule 70:'class_g="Sublime_text"' --opacity-rule 85:'class_g="Brave-browser"' -f --backend glx
+exec_always --no-startup-id compton -b --config ~/.config/i3/compton.conf
 
 
 
