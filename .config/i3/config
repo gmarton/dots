@@ -789,7 +789,7 @@ popup_during_fullscreen smart
 
 
 for_window [class="^.*"] border pixel 1
-gaps inner 25
+gaps inner 10
 gaps outer 1
 smart_gaps on
 smart_borders on
@@ -850,9 +850,9 @@ mode "$mode_gaps_outer" {
 
 #if you want transparency on non-focused windows, ...
 #exec_always --no-startup-id compton --blur-background --blur-method kawase --blur-strength 12 --opacity-rule 90:'class_g="Termite"' --opacity-rule 60:'class_g="Thunar"' --opacity-rule 95:'class_g="rofi"' --opacity-rule 70:'class_g="Sublime_text"' --opacity-rule 85:'class_g="Brave-browser"' -f --backend glx
-exec_always --no-startup-id compton -b --config ~/.config/i3/compton.conf
+#exec_always --no-startup-id compton -b --config ~/.config/i3/compton.conf
 
-
+exec_always picom -f
 
 
 #####################################################################################################################
