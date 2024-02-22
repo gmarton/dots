@@ -672,6 +672,7 @@ for_window [class="Terminator"] focus
 #################                          variety for your wallpapers                              #################
 #####################################################################################################################
 
+exec --no-startup-id feh --bg-fill ~/dots/bg/wallpaper.jpg
 
 #Variety keybindings mod1 = ALT
 # trash wallpaper
