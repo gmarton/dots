@@ -58,6 +58,7 @@ install_if_needed "gh"
 echo "Installing AUR packages..."
 install_if_needed "termite"
 install_if_needed "protonvpn"
+install_id_needed "trizen"
 
 # Step 4: Start and enable NetworkManager service
 echo "Starting and enabling NetworkManager service..."
