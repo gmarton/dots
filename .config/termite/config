@@ -1,5 +1,6 @@
 [options]
 #https://github.com/thestinger/termite/blob/master/config
+transparency = 0.4
 allow_bold = true
 audible_bell = false
 browser = xdg-open

@@ -398,15 +398,15 @@ assign [class="Firefox|firefox"]                                                
 
 # USER APPLICATIONS TO START AT BOOT
 # Restore wal colorcheme
-exec --no-startup-id wal -R
+#exec --no-startup-id wal -R
 #Chat clients
-exec --no-startup-id pidgin
+#exec --no-startup-id pidgin
 
 #browser
 #exec --no-startup-id vivaldi-stable
 #for_window [class="Vivaldi-stable"] focus
-exec --no-startup-id firefox
-for_window [class="Firefox"] focus
+#exec --no-startup-id firefox
+#for_window [class="Firefox"] focus
 #exec --no-startup-id vivaldi-stable
 #for_window [class="Chromium"] focus
 #text-editor
@@ -425,7 +425,7 @@ for_window [class="Firefox"] focus
 #exec --no-startup-id evolution
 
 #Music
-exec --no-startup-id spotify
+#exec --no-startup-id spotify
 #for_window [class="Spotify"] focus
 
 
@@ -439,7 +439,7 @@ exec --no-startup-id spotify
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Updater
-exec --no-startup-id pamac-tray
+#exec --no-startup-id pamac-tray
 
 # bluetooth
 #exec --no-startup-id blueberry-tray
@@ -489,11 +489,11 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 #not workspace related
 
 # terminal
-bindsym $mod+Return exec --no-startup-id xfce4-terminal;focus
-bindsym $mod+KP_Enter exec --no-startup-id xfce4-terminal;focus
-bindsym control+mod1+t exec --no-startup-id xfce4-terminal; focus
-bindsym control+mod1+Return exec --no-startup-id xfce4-terminal; focus
-bindsym control+mod1+KP_Enter exec --no-startup-id xfce4-terminal; focus
+bindsym $mod+Return exec --no-startup-id termite;focus
+bindsym $mod+KP_Enter exec --no-startup-id termite;focus
+bindsym control+mod1+t exec --no-startup-id termite; focus
+bindsym control+mod1+Return exec --no-startup-id termite; focus
+bindsym control+mod1+KP_Enter exec --no-startup-id termite; focus
 
 #System monitor
 bindsym control+Shift+Escape exec --no-startup-id xfce4-taskmanager;focus
