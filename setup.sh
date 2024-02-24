@@ -39,6 +39,15 @@ paru_if_needed() {
     fi
 }
 
+# Define a function for the restart prompt
+restart_i3_prompt() {
+    echo "Do you want to restart i3? (Y/n): "
+    read -r answer
+    if [[ $answer == "" || $answer == "Y" || $answer == "y" ]]; then
+        i3-msg restart
+    fi
+}
+
 # Step 1: Install paru
 echo "Installing paru..."
 sudo pacman -S --needed base-devel git
@@ -133,4 +142,5 @@ cd $HOME
 git clone https://github.com/arcolinuxd/arco-i3.git
 
 echo "Setup complete!"
+restart_i3_prompt
 
