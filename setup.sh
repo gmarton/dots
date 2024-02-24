@@ -129,15 +129,7 @@ curl -o "$WALLPAPER_DIR/wallpaper.jpg" "$WALLPAPER_URL"
 echo "Applying wallpaper..."
 feh --bg-fill "$WALLPAPER_DIR/wallpaper.jpg"
 
-# Step 7: Install Oh My Zsh if not already installed
-echo "Checking if Oh My Zsh is installed..."
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    echo "Oh My Zsh is not installed. Installing..."
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-else
-    echo "Oh My Zsh is already installed."
-fi
-# Step 8: Get Arco scripts
+# Step 7: Get Arco scripts
 cd $HOME
 git clone https://github.com/arcolinuxd/arco-i3.git
 
@@ -146,4 +138,13 @@ arco-i3/700-installing-fonts.sh
 
 echo "Setup complete!"
 restart_i3_prompt
+
+# Step 8: Install Oh My Zsh if not already installed
+echo "Checking if Oh My Zsh is installed..."
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "Oh My Zsh is not installed. Installing..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+else
+    echo "Oh My Zsh is already installed."
+fi
 
