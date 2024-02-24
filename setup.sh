@@ -30,13 +30,22 @@ install_if_needed() {
     fi
 }
 
+paru_if_needed() {
+    if ! is_installed "$1"; then
+        echo "Installing $1..."
+        paru -S --noconfirm "$1"
+    else
+        echo "$1 is already installed."
+    fi
+}
+
 # Step 1: Install paru
 echo "Installing paru..."
 sudo pacman -S --needed base-devel git
 if ! is_installed "paru"; then
     git clone https://aur.archlinux.org/paru.git
     cd paru || exit
-    makepkg -si
+    makepkg -si --noconfirm
     cd ..
     rm -rf paru
 else
@@ -52,13 +61,14 @@ install_if_needed "libnotify"
 install_if_needed "feh"
 install_if_needed "conky"
 install_if_needed "picom"
-install_if_needed "gh"
+install_if_needed "github-cli"
+install_if_needed "zsh"
 
 # Step 3: Install AUR packages with paru
 echo "Installing AUR packages..."
-install_if_needed "termite"
-install_if_needed "protonvpn"
-install_id_needed "trizen"
+paru_if_needed "termite"
+paru_if_needed "protonvpn"
+paru_if_needed "trizen"
 
 # Step 4: Start and enable NetworkManager service
 echo "Starting and enabling NetworkManager service..."
@@ -73,7 +83,7 @@ if [ -d "$DOTS_DIR" ]; then
     git pull origin master
 else
     echo "Getting dotfiles..."
-    gh repo clone gmarton/dots
+    git clone https://github.com/gmarton.git
 fi
 
 # Backup existing dotfiles and create symlinks
