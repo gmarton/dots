@@ -118,6 +118,9 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 else
     echo "Oh My Zsh is already installed."
 fi
+# Step 8: Get Arco scripts
+cd $HOME
+git clone https://github.com/arcolinuxd/arco-i3.git
 
 echo "Setup complete!"
 
