@@ -24,7 +24,7 @@ is_installed() {
 install_if_needed() {
     if ! is_installed "$1"; then
         echo "Installing $1..."
-        sudo pacman -S --noconfirm "$1"
+        sudo pacman -S --noconfirm --needed "$1"
     else
         echo "$1 is already installed."
     fi
@@ -92,7 +92,7 @@ if [ -d "$DOTS_DIR" ]; then
     git pull origin master
 else
     echo "Getting dotfiles..."
-    git clone https://github.com/gmarton.git
+    git clone https://github.com/gmarton/dots.git
 fi
 
 # Backup existing dotfiles and create symlinks
@@ -140,6 +140,9 @@ fi
 # Step 8: Get Arco scripts
 cd $HOME
 git clone https://github.com/arcolinuxd/arco-i3.git
+
+# Step 9: Install fonts with Erik's script
+arco-i3/700-installing-fonts.sh
 
 echo "Setup complete!"
 restart_i3_prompt
