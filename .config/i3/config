@@ -131,7 +131,7 @@ bindsym $mod+Shift+0 move container to workspace 10; workspace 10
 #####################################################################################################################
 
 # start dmenu
-bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#00ffff' -sb '#00ffff' -sf '#191919' -fn 'Cascadia Code:bold:pixelsize=16'
+bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#00ffff' -sb '#00ffff' -sf '#191919' -fn 'Fantasque Sans Mono:thin:pixelsize=24'
 
 # gmrun
 #bindsym mod1+F2 exec --no-startup-id gmrun
