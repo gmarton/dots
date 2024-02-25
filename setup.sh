@@ -73,6 +73,9 @@ install_if_needed "picom"
 install_if_needed "github-cli"
 install_if_needed "zsh"
 install_if_needed "bind"
+install_if_needed "ttf-fantasque-sans-mono"
+install_if_needed "ttf-cascadia-code"
+install_if_needed "ttf-hack-nerd"
 
 # Step 3: Install AUR packages with paru
 echo "Installing AUR packages..."
