@@ -72,6 +72,7 @@ install_if_needed "conky"
 install_if_needed "picom"
 install_if_needed "github-cli"
 install_if_needed "zsh"
+install_if_needed "bind"
 
 # Step 3: Install AUR packages with paru
 echo "Installing AUR packages..."
