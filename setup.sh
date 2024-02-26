@@ -1,5 +1,30 @@
 #!/bin/bash
 
+# Array of packages to be installed
+packages=(
+    "network-manager-applet"
+    "polybar"
+    "neovim"
+    "libnotify"
+    "feh"
+    "conky"
+    "picom"
+    "github-cli"
+    "zsh"
+    "gnome-keyring"
+    "bind"
+    "ttf-fantasque-sans-mono"
+    "ttf-cascadia-code"
+    "ttf-hack-nerd"
+)
+
+# Array of AUR packages to be installed with Paru
+aur_packages=(
+    "termite"
+    "protonvpn"
+    "trizen"
+)
+
 # Print disclaimer and explanation
 echo "Disclaimer: Use this script at your own risk. The author of this script is not responsible for any data loss or damage to configuration files that may occur as a result of running this script. It is recommended to review the script and understand its actions before executing it on your system. By running this script, you acknowledge and accept the risks involved."
 echo
@@ -22,21 +47,26 @@ is_installed() {
 
 # Function to install package if not already installed
 install_if_needed() {
-    if ! is_installed "$1"; then
-        echo "Installing $1..."
-        sudo pacman -S --noconfirm --needed "$1"
-    else
-        echo "$1 is already installed."
-    fi
+    for pkg in "$@"; do
+        if ! is_installed "$pkg"; then
+            echo "Installing $pkg..."
+            sudo pacman -S --noconfirm --needed "$pkg"
+        else
+            echo "$pkg is already installed."
+        fi
+    done
 }
 
+# Function to install AUR package with Paru if not already installed
 paru_if_needed() {
-    if ! is_installed "$1"; then
-        echo "Installing $1..."
-        paru -S --noconfirm "$1"
-    else
-        echo "$1 is already installed."
-    fi
+    for pkg in "$@"; do
+        if ! is_installed "$pkg"; then
+            echo "Installing $pkg..."
+            paru -S --noconfirm "$pkg"
+        else
+            echo "$pkg is already installed."
+        fi
+    done
 }
 
 # Define a function for the restart prompt
@@ -63,26 +93,11 @@ fi
 
 # Step 2: Install required packages
 echo "Installing required packages..."
-install_if_needed "network-manager-applet"
-install_if_needed "polybar"
-install_if_needed "neovim"
-install_if_needed "libnotify"
-install_if_needed "feh"
-install_if_needed "conky"
-install_if_needed "picom"
-install_if_needed "github-cli"
-install_if_needed "zsh"
-install_if_needed "gnome-keyring"
-install_if_needed "bind"
-install_if_needed "ttf-fantasque-sans-mono"
-install_if_needed "ttf-cascadia-code"
-install_if_needed "ttf-hack-nerd"
+install_if_needed "${packages[@]}"
 
 # Step 3: Install AUR packages with paru
 echo "Installing AUR packages..."
-paru_if_needed "termite"
-paru_if_needed "protonvpn"
-paru_if_needed "trizen"
+paru_if_needed "${aur_packages[@]}"
 
 # Step 4: Start and enable NetworkManager service
 echo "Starting and enabling NetworkManager service..."
@@ -138,13 +153,13 @@ feh --bg-fill "$WALLPAPER_DIR/wallpaper.jpg"
 cd $HOME
 git clone https://github.com/arcolinuxd/arco-i3.git
 
-# Step 9: Install fonts with Erik's script
+# Step 8: Install fonts with Erik's script
 arco-i3/700-installing-fonts.sh
 
 echo "Setup complete!"
 restart_i3_prompt
 
-# Step 8: Install Oh My Zsh if not already installed
+# Step 9: Install Oh My Zsh if not already installed
 echo "Checking if Oh My Zsh is installed..."
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "Oh My Zsh is not installed. Installing..."
@@ -152,4 +167,3 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 else
     echo "Oh My Zsh is already installed."
 fi
-
