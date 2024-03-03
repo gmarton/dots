@@ -3,6 +3,7 @@
 # Array of packages to be installed
 packages=(
     "network-manager-applet"
+    "gvfs"
     "polybar"
     "neovim"
     "libnotify"
